@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Driver Mont Blanc - Taxi & VTC Chamonix</title>
+    <meta name="description" content="Réservez votre chauffeur VTC & Taxi à Chamonix Mont-Blanc. Transferts privés depuis l'aéroport de Genève (GVA), Lyon et Milan vers les stations de ski." />
+    <meta name="keywords" content="taxi chamonix, vtc chamonix, transfert geneve chamonix, navette aéroport" />
+    <meta name="robots" content="index, follow" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                500: '#F2541B', // Orange vif action
+                600: '#d94e18',
+                50: '#fff1ec',
+                100: '#ffe4db'
+              },
+              dark: {
+                // Remplacement du noir par du BLEU NUIT (Navy)
+                900: '#0f172a', // Slate 900
+                800: '#1e293b', // Slate 800
+                950: '#020617'  // Slate 950 (presque noir mais bleu)
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Montserrat', 'sans-serif'],
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'fade-in-right': 'fadeInRight 0.8s ease-out forwards',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeInRight: {
+                '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                '100%': { opacity: '1', transform: 'translateX(0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body { font-family: 'Inter', sans-serif; }
+      h1, h2, h3, h4, h5, .font-display { font-family: 'Montserrat', sans-serif; }
+      
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      }
+      
+      /* Utilitaires d'animation au scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+      }
+      
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #F2541B; 
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #d94e18; 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@stripe/stripe-js": "https://aistudiocdn.com/@stripe/stripe-js@^8.5.3",
+    "@stripe/react-stripe-js": "https://aistudiocdn.com/@stripe/react-stripe-js@^5.4.1"
+  }
+}
+</script>
+</head>
+  <body class="bg-white text-slate-800 antialiased overflow-x-hidden">
+    <div id="root"></div>
+  </body>
+</html>
