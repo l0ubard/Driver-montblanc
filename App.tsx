@@ -59,44 +59,56 @@ const App: React.FC = () => {
       <Navbar activeSection={activeSection} scrollToSection={scrollToSection} />
 
       {/* --- HERO SECTION --- */}
-      <section id={Section.HOME} className="relative h-[85vh] min-h-[600px] flex flex-col justify-center items-center text-white pb-20 overflow-hidden rounded-b-[3rem]">
+      <section id={Section.HOME} className="relative h-[90vh] min-h-[650px] flex flex-col justify-center items-center text-white pb-20 overflow-hidden rounded-b-[3rem]">
         <div className="absolute inset-0 bg-dark-900/30 z-10"></div>
         {/* Ajout d'un overlay dégradé bleu nuit pour casser le coté sombre/sport */}
         <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent z-10 opacity-80"></div>
         
-        {/* Image de fond : Randonneurs face au Mont Blanc (Image fournie par l'utilisateur) */}
+        {/* Image de fond : Nouvelle image demandée */}
         <div 
-          className="absolute inset-0 z-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://distances.plus/app/uploads/2022/09/tour-mont-blanc-photo-vincent-champagne.jpg')" }}
+          className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-[20s] hover:scale-105"
+          style={{ backgroundImage: "url('https://media.ouest-france.fr/v1/pictures/MjAyMzEwMjQ0ZjIzM2JkYjEzM2IyZjNlNTAwYjI3NTMyZmJhYmU?width=1260&height=708&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=212cc36812c50585116dc57ef5871dd2445891840d4c91e9477d728dab261946')" }}
         ></div>
         
         <div className="relative z-20 text-center px-4 w-full max-w-7xl mx-auto flex flex-col items-center pt-10">
           
-          <h1 className="animate-fade-in-up text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-shadow uppercase font-display tracking-wide" style={{animationDelay: '0.3s'}}>
+          <div className="animate-fade-in-up mb-4" style={{animationDelay: '0.2s'}}>
+             <span className="bg-brand-500 text-white px-5 py-2 rounded-full text-xs md:text-sm font-bold uppercase tracking-widest shadow-lg backdrop-blur-sm border border-brand-500/50">Un service premium au coeur des Alpes</span>
+          </div>
+
+          <h1 className="animate-fade-in-up text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-shadow uppercase font-sans tracking-wide" style={{animationDelay: '0.3s'}}>
             Transfert<br/>
-            Mont Blanc
+            <span className="text-white">Mont Blanc</span>
           </h1>
 
-          <p className="animate-fade-in-up text-lg md:text-xl font-medium mb-10 max-w-2xl mx-auto text-shadow font-sans text-gray-100 leading-relaxed" style={{animationDelay: '0.5s'}}>
-            Vivez l'aventure des Alpes avec un confort absolu. De Genève aux sentiers de randonnée, nous vous transportons.
+          <p className="animate-fade-in-up text-lg md:text-2xl font-medium mb-10 max-w-2xl mx-auto text-shadow font-sans text-gray-100 leading-relaxed" style={{animationDelay: '0.5s'}}>
+            Votre chauffeur privé à Chamonix. Excellence, ponctualité et confort pour tous vos trajets alpins.
           </p>
 
-          <div className="animate-fade-in-up" style={{animationDelay: '0.7s'}}>
+          <div className="animate-fade-in-up flex flex-col md:flex-row gap-4 w-full justify-center items-center" style={{animationDelay: '0.7s'}}>
              <button 
               onClick={() => {
                   const form = document.getElementById('booking-form-anchor');
                   form?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="group bg-brand-500 hover:bg-white text-white hover:text-brand-500 font-bold py-4 px-10 text-sm uppercase tracking-widest shadow-2xl transition-all duration-300 flex items-center gap-2 font-display rounded-full"
+              className="group bg-brand-500 hover:bg-brand-600 text-white font-bold py-5 px-10 text-sm md:text-base uppercase tracking-widest shadow-2xl transition-all duration-300 flex items-center gap-2 rounded-full w-full md:w-auto justify-center"
             >
               <span>Réserver maintenant</span>
               <ArrowRight className="group-hover:translate-x-1 transition-transform" />
             </button>
+            
+            <a 
+              href="tel:+33686864159"
+              className="group bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white hover:text-dark-900 text-white font-bold py-5 px-10 text-sm md:text-base uppercase tracking-widest shadow-2xl transition-all duration-300 flex items-center gap-3 rounded-full w-full md:w-auto justify-center"
+            >
+               <Phone className="animate-pulse" size={20} />
+               <span>Appeler</span>
+            </a>
           </div>
         </div>
         
         {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce text-white/70">
+        <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-20 animate-bounce text-white/70">
            <ChevronDown size={32} />
         </div>
       </section>
@@ -106,65 +118,19 @@ const App: React.FC = () => {
         <BookingForm />
       </div>
 
-      {/* --- HISTOIRE & VALEURS --- */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <RevealOnScroll className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div className="relative">
-                    <div className="absolute -top-4 -left-4 w-24 h-24 bg-brand-100 rounded-full opacity-50 z-0"></div>
-                    <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-brand-500/10 rounded-full z-0"></div>
-                    <img 
-                        src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop" 
-                        alt="Chauffeur privé" 
-                        className="relative z-10 w-full h-[500px] object-cover shadow-2xl rounded-[2rem] grayscale hover:grayscale-0 transition-all duration-700"
-                    />
-                    <div className="absolute bottom-10 -right-10 bg-white p-8 shadow-xl max-w-xs hidden md:block z-20 rounded-2xl border-l-8 border-brand-500">
-                        <p className="text-4xl font-bold text-brand-500 font-display">15+</p>
-                        <p className="text-gray-600 font-bold uppercase text-sm tracking-wider">Années d'expérience dans les Alpes</p>
-                    </div>
-                </div>
-                <div>
-                    <h2 className="text-brand-500 font-bold tracking-widest uppercase mb-2">Notre Excellence</h2>
-                    <h3 className="text-3xl md:text-4xl font-bold text-dark-900 uppercase font-display mb-6 leading-tight">
-                        Plus qu'un trajet,<br/>un voyage <span className="text-brand-500">sur mesure</span>.
-                    </h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                        Fondée au cœur de Chamonix, Driver Mont Blanc n'est pas une simple société de taxi. Nous sommes des artisans du transport. Nos chauffeurs connaissent chaque virage, chaque raccourci et les conditions météorologiques changeantes de la montagne.
-                    </p>
-                    <ul className="space-y-4 mb-8">
-                        {[
-                            "Chauffeurs locaux expérimentés et multilingues",
-                            "Flotte Mercedes-Benz & Tesla dernière génération",
-                            "Service disponible 24h/24 et 7j/7",
-                            "Attente gratuite à l'aéroport en cas de retard"
-                        ].map((item, i) => (
-                            <li key={i} className="flex items-center gap-3">
-                                <span className="bg-brand-500 text-white rounded-full p-1"><CheckCircle size={14} /></span>
-                                <span className="text-dark-800 font-medium">{item}</span>
-                            </li>
-                        ))}
-                    </ul>
-                    <button onClick={() => scrollToSection(Section.CONTACT)} className="text-brand-500 font-bold uppercase tracking-widest border-b-2 border-brand-500 pb-1 hover:text-brand-600 transition-colors">
-                        En savoir plus sur nous
-                    </button>
-                </div>
-            </RevealOnScroll>
-        </div>
-      </section>
-
       {/* --- FLEET (Moved Up) --- */}
-      <section id={Section.FLEET} className="py-24 bg-dark-900 text-white relative rounded-[3rem] mx-4 my-8 overflow-hidden">
+      <section id={Section.FLEET} className="py-24 bg-dark-900 text-white relative rounded-[3rem] mx-4 my-8 overflow-hidden shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-800 pb-8">
             <div>
-                 <h2 className="text-3xl md:text-4xl font-bold text-white uppercase font-display">
+                 <h2 className="text-3xl md:text-5xl font-black text-white uppercase font-sans">
                   Notre <span className="text-brand-500">Flotte</span>
                 </h2>
-                <p className="mt-4 text-gray-400 max-w-lg">Voyagez en première classe. Nos véhicules sont équipés pour la neige et le confort absolu.</p>
+                <p className="mt-4 text-gray-400 max-w-lg font-medium">Voyagez en première classe. Nos véhicules sont équipés pour la neige et le confort absolu.</p>
             </div>
-            <div className="hidden md:flex gap-2">
+            <div className="hidden md:flex gap-2 items-center">
                 <span className="w-3 h-3 bg-brand-500 rounded-full animate-pulse"></span>
-                <span className="text-xs uppercase font-bold tracking-widest text-gray-400">Véhicules 2024/2025</span>
+                <span className="text-xs uppercase font-bold tracking-widest text-gray-400">Véhicules 2025</span>
             </div>
           </RevealOnScroll>
 
@@ -193,15 +159,15 @@ const App: React.FC = () => {
                 }
             ].map((car, i) => (
                 <RevealOnScroll key={i} className={`group delay-${i*100}`}>
-                    <div className="bg-dark-800 hover:bg-dark-950 border border-gray-800 hover:border-brand-500 transition-all duration-300 rounded-[2rem] overflow-hidden">
+                    <div className="bg-dark-800 hover:bg-dark-950 border border-gray-800 hover:border-brand-500 transition-all duration-300 rounded-[2rem] overflow-hidden shadow-lg h-full flex flex-col">
                         <div className="h-64 overflow-hidden relative">
                             <div className="absolute inset-0 bg-dark-900/10 group-hover:bg-transparent transition-all z-10"></div>
-                            <img src={car.img} alt={car.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                            <img src={car.img} alt={car.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                         </div>
-                        <div className="p-8">
-                            <div className="flex justify-between items-start mb-2">
-                                <h3 className="text-xl font-bold font-display uppercase text-white">{car.name}</h3>
-                                <span className="text-xs font-bold text-brand-500 border border-brand-500 px-3 py-1 rounded-full">{car.model}</span>
+                        <div className="p-8 flex-1 flex flex-col">
+                            <div className="flex justify-between items-start mb-4">
+                                <h3 className="text-xl font-bold font-sans uppercase text-white leading-none">{car.name}</h3>
+                                <span className="text-[10px] font-bold text-dark-900 bg-brand-500 px-3 py-1 rounded-full">{car.model}</span>
                             </div>
                             
                             <div className="flex flex-wrap gap-2 mb-6">
@@ -209,7 +175,7 @@ const App: React.FC = () => {
                                     <span key={f} className="text-[10px] uppercase font-bold text-gray-400 bg-dark-900 px-2 py-1 rounded-md">{f}</span>
                                 ))}
                             </div>
-                            <div className="flex justify-between items-center border-t border-gray-700 pt-4">
+                            <div className="mt-auto flex justify-between items-center border-t border-gray-700 pt-4">
                                 <div className="flex items-center gap-4 text-sm font-semibold text-gray-300">
                                     <div className="flex items-center gap-1"><UserCheck size={16} className="text-brand-500"/> {car.pax}</div>
                                     <div className="flex items-center gap-1"><Shield size={16} className="text-brand-500"/> {car.luggage}</div>
@@ -230,7 +196,7 @@ const App: React.FC = () => {
       <section id={Section.SERVICES} className="py-24 bg-slate-50 relative rounded-[3rem] my-8 mx-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <RevealOnScroll className="text-center mb-20">
-            <h2 className="text-3xl md:text-4xl font-bold text-dark-900 uppercase font-display mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-dark-900 uppercase font-sans mb-4">
               Nos <span className="text-brand-500">Services</span>
             </h2>
             <div className="w-24 h-1.5 bg-brand-500 mx-auto rounded-full"></div>
@@ -245,18 +211,64 @@ const App: React.FC = () => {
                 <RevealOnScroll key={i} className={`delay-${i * 100}`}>
                     <div className="bg-white p-10 h-full border border-gray-100 hover:border-brand-500 shadow-sm hover:shadow-2xl transition-all duration-300 group rounded-[2rem]">
                         
-                        <div className="w-16 h-16 bg-brand-50 text-brand-500 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300">
+                        <div className="w-16 h-16 bg-brand-50 text-brand-500 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-brand-500 group-hover:text-white transition-all duration-300 shadow-inner">
                             {service.icon}
                         </div>
                         
-                        <h3 className="text-xl font-bold uppercase font-display mb-4 text-dark-900">{service.title}</h3>
-                        <p className="text-gray-500 leading-relaxed">
+                        <h3 className="text-xl font-bold uppercase font-sans mb-4 text-dark-900">{service.title}</h3>
+                        <p className="text-gray-500 leading-relaxed font-medium">
                             {service.desc}
                         </p>
                     </div>
                 </RevealOnScroll>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* --- HISTOIRE & VALEURS --- */}
+      <section className="py-24 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <RevealOnScroll className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div className="relative">
+                    <div className="absolute -top-4 -left-4 w-24 h-24 bg-brand-100 rounded-full opacity-50 z-0"></div>
+                    <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-brand-500/10 rounded-full z-0"></div>
+                    <img 
+                        src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop" 
+                        alt="Chauffeur privé" 
+                        className="relative z-10 w-full h-[500px] object-cover shadow-2xl rounded-[2rem] grayscale hover:grayscale-0 transition-all duration-700"
+                    />
+                    <div className="absolute bottom-10 -right-10 bg-white p-8 shadow-xl max-w-xs hidden md:block z-20 rounded-2xl border-l-8 border-brand-500">
+                        <p className="text-4xl font-bold text-brand-500 font-sans">15+</p>
+                        <p className="text-gray-600 font-bold uppercase text-sm tracking-wider">Années d'expérience dans les Alpes</p>
+                    </div>
+                </div>
+                <div>
+                    <h2 className="text-brand-500 font-bold tracking-widest uppercase mb-2">Notre Excellence</h2>
+                    <h3 className="text-3xl md:text-4xl font-black text-dark-900 uppercase font-sans mb-6 leading-tight">
+                        Plus qu'un trajet,<br/>un voyage <span className="text-brand-500">sur mesure</span>.
+                    </h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed text-lg font-medium">
+                        Fondée au cœur de Chamonix, Driver Mont Blanc n'est pas une simple société de taxi. Nous sommes des artisans du transport. Nos chauffeurs connaissent chaque virage, chaque raccourci et les conditions météorologiques changeantes de la montagne.
+                    </p>
+                    <ul className="space-y-4 mb-8">
+                        {[
+                            "Chauffeurs locaux expérimentés et multilingues",
+                            "Flotte Mercedes-Benz & Tesla dernière génération",
+                            "Service disponible 24h/24 et 7j/7",
+                            "Attente gratuite à l'aéroport en cas de retard"
+                        ].map((item, i) => (
+                            <li key={i} className="flex items-center gap-3">
+                                <span className="bg-brand-500 text-white rounded-full p-1"><CheckCircle size={14} /></span>
+                                <span className="text-dark-800 font-bold text-sm uppercase">{item}</span>
+                            </li>
+                        ))}
+                    </ul>
+                    <button onClick={() => scrollToSection(Section.CONTACT)} className="text-brand-500 font-bold uppercase tracking-widest border-b-2 border-brand-500 pb-1 hover:text-brand-600 transition-colors">
+                        En savoir plus sur nous
+                    </button>
+                </div>
+            </RevealOnScroll>
         </div>
       </section>
 
@@ -271,7 +283,7 @@ const App: React.FC = () => {
                     <Star fill="currentColor" size={20} />
                     <Star fill="currentColor" size={20} />
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-dark-900 uppercase font-display mb-4">Avis Clients</h2>
+                <h2 className="text-3xl md:text-4xl font-black text-dark-900 uppercase font-sans mb-4">Avis Clients</h2>
             </RevealOnScroll>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -284,7 +296,7 @@ const App: React.FC = () => {
                         <div className="flex gap-1 mb-4 text-brand-500">
                             {[1,2,3,4,5].map(s => <Star key={s} size={12} fill="currentColor" />)}
                         </div>
-                        <p className="text-gray-700 italic mb-6 relative z-10 leading-relaxed text-sm">"{review.text}"</p>
+                        <p className="text-gray-700 italic mb-6 relative z-10 leading-relaxed text-sm font-medium">"{review.text}"</p>
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 bg-dark-900 rounded-full flex items-center justify-center text-white font-bold text-sm">
                                 {review.name.charAt(0)}
@@ -304,7 +316,7 @@ const App: React.FC = () => {
       <section className="py-24 bg-slate-50 rounded-[3rem] mx-4 my-8">
         <div className="max-w-4xl mx-auto px-4">
              <RevealOnScroll className="text-center mb-16">
-                <h2 className="text-3xl font-bold text-dark-900 uppercase font-display mb-4">Questions Fréquentes</h2>
+                <h2 className="text-3xl font-black text-dark-900 uppercase font-sans mb-4">Questions Fréquentes</h2>
              </RevealOnScroll>
              
              <div className="space-y-4">
@@ -324,7 +336,7 @@ const App: React.FC = () => {
                                 {openFaqIndex === index ? <ChevronUp className="text-brand-500" /> : <ChevronDown className="text-gray-400" />}
                             </button>
                             <div className={`transition-all duration-300 ease-in-out overflow-hidden ${openFaqIndex === index ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}>
-                                <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2 text-sm">
+                                <div className="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2 text-sm font-medium">
                                     {item.a}
                                 </div>
                             </div>
@@ -339,14 +351,14 @@ const App: React.FC = () => {
       <section className="py-20 bg-brand-500 text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-dark-900 opacity-20"></div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold uppercase font-display mb-8">Prêt à partir ?</h2>
-            <p className="text-xl mb-10 text-brand-50 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-black uppercase font-sans mb-8">Prêt à partir ?</h2>
+            <p className="text-xl mb-10 text-brand-50 max-w-2xl mx-auto font-medium">
                 Réservez votre chauffeur en moins de 2 minutes et recevez votre confirmation instantanément.
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
                  <button 
                     onClick={() => scrollToSection(Section.HOME)}
-                    className="bg-white text-brand-500 hover:bg-gray-100 font-bold py-4 px-10 uppercase tracking-widest shadow-xl transition-all transform hover:-translate-y-1 font-display rounded-full"
+                    className="bg-white text-brand-500 hover:bg-gray-100 font-bold py-4 px-10 uppercase tracking-widest shadow-xl transition-all transform hover:-translate-y-1 font-sans rounded-full"
                 >
                     Réserver mon trajet
                 </button>
@@ -366,25 +378,20 @@ const App: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                 <div>
                      <div className="flex flex-col mb-6 gap-3">
-                         {/* Logo Footer - SVG Pro */}
+                         {/* Logo Footer - URL fournie */}
                          <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center">
-                             <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-md" xmlns="http://www.w3.org/2000/svg" fill="none">
-                                <path d="M50 20 L85 80 H15 L50 20 Z" fill="#F2541B" />
-                                <path d="M50 20 L50 80 L85 80 Z" fill="#d94e18" />
-                                <path d="M50 20 L38 42 L50 35 L62 42 L50 20 Z" fill="white" />
-                                <path d="M35 85 Q50 75 65 85" stroke="#F2541B" strokeWidth="4" strokeLinecap="round"/>
-                             </svg>
+                             <img src="https://e7.pngegg.com/pngimages/973/60/png-clipart-gray-mountain-and-yellow-sun-logo-logo-graphic-design-creative-sunset-and-mountain-text-orange-thumbnail.png" alt="Driver Mont Blanc Logo" className="w-full h-full object-contain" />
                         </div>
                         <div>
-                            <span className="text-2xl font-bold tracking-tighter leading-none font-display uppercase text-white">
+                            <span className="text-2xl font-bold tracking-tighter leading-none font-sans uppercase text-white">
                                 Driver
                             </span>
-                            <span className="text-brand-500 font-bold tracking-[0.1em] text-xs leading-none uppercase font-display block">
+                            <span className="text-brand-500 font-bold tracking-[0.1em] text-xs leading-none uppercase font-sans block">
                                 Mont Blanc
                             </span>
                         </div>
                     </div>
-                    <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                    <p className="text-gray-400 text-sm leading-relaxed mb-6 font-medium">
                         Votre partenaire de confiance pour tous vos déplacements dans la vallée de Chamonix et vers les aéroports de la région.
                     </p>
                     <div className="flex gap-4">
@@ -395,7 +402,7 @@ const App: React.FC = () => {
 
                 <div>
                     <h4 className="font-bold uppercase tracking-widest mb-6 text-brand-500 text-xs">Liens Rapides</h4>
-                    <ul className="space-y-3 text-sm text-gray-400">
+                    <ul className="space-y-3 text-sm text-gray-400 font-medium">
                         <li><button onClick={() => scrollToSection(Section.HOME)} className="hover:text-white transition-colors">Accueil</button></li>
                         <li><button onClick={() => scrollToSection(Section.FLEET)} className="hover:text-white transition-colors">Véhicules</button></li>
                         <li><button onClick={() => scrollToSection(Section.SERVICES)} className="hover:text-white transition-colors">Services</button></li>
@@ -405,7 +412,7 @@ const App: React.FC = () => {
 
                 <div>
                     <h4 className="font-bold uppercase tracking-widest mb-6 text-brand-500 text-xs">Destinations Top</h4>
-                    <ul className="space-y-3 text-sm text-gray-400">
+                    <ul className="space-y-3 text-sm text-gray-400 font-medium">
                         <li>Genève ⇄ Chamonix</li>
                         <li>Genève ⇄ Megève</li>
                         <li>Genève ⇄ Courchevel</li>
@@ -416,15 +423,15 @@ const App: React.FC = () => {
                 <div>
                     <h4 className="font-bold uppercase tracking-widest mb-6 text-brand-500 text-xs">Contact</h4>
                     <div className="space-y-4">
-                        <div className="flex items-center gap-3 text-gray-400 text-sm">
+                        <div className="flex items-center gap-3 text-gray-400 text-sm font-medium">
                             <Phone size={16} className="text-brand-500" />
                             <span>06 86 86 41 59</span>
                         </div>
-                        <div className="flex items-center gap-3 text-gray-400 text-sm">
+                        <div className="flex items-center gap-3 text-gray-400 text-sm font-medium">
                             <Mail size={16} className="text-brand-500" />
                             <span>drivermontblanc@gmail.com</span>
                         </div>
-                        <div className="flex items-center gap-3 text-gray-400 text-sm">
+                        <div className="flex items-center gap-3 text-gray-400 text-sm font-medium">
                             <MapPin size={16} className="text-brand-500" />
                             <span>74400 Chamonix, France</span>
                         </div>
@@ -433,7 +440,7 @@ const App: React.FC = () => {
             </div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+        <div className="max-w-7xl mx-auto px-4 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 font-medium">
             <p>&copy; 2024 Driver Mont Blanc. Tous droits réservés.</p>
             <p className="mt-2 md:mt-0">Design Premium</p>
         </div>
